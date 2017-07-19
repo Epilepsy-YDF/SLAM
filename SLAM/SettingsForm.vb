@@ -7,7 +7,7 @@
         LogCheckBox.Checked = My.Settings.LogError
         StartEnabledCheckBox.Checked = My.Settings.StartEnabled
         ConTagsCheckBox.Checked = My.Settings.WriteTags
-        ChangeRelayButton.Text = String.Format("Relay key: ""{0}"" (change)", My.Settings.RelayKey)
+        ChangeRelayButton.Text = String.Format("中继键：""{0}""（更改）", My.Settings.RelayKey)
         HoldToPlay.Checked = My.Settings.HoldToPlay
         userdatatext.Text = My.Settings.userdata
         steamappstext.Text = My.Settings.steamapps
@@ -49,9 +49,9 @@
             If Not SelectKeyDialog.ChosenKey = My.Settings.PlayKey Then
                 My.Settings.RelayKey = SelectKeyDialog.ChosenKey
                 My.Settings.Save()
-                ChangeRelayButton.Text = String.Format("Relay key: ""{0}"" (change)", My.Settings.RelayKey)
+                ChangeRelayButton.Text = String.Format("中继键：""{0}""（更改）", My.Settings.RelayKey)
             Else
-                MessageBox.Show("Play key and relay key can not be the same!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("播放键与中继键不能相同！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
@@ -77,7 +77,7 @@
 
     Private Sub ShowFolderSelector(name As String, ByRef setting As String)
         Dim ChangeDirDialog As New FolderBrowserDialog
-        ChangeDirDialog.Description = String.Format("Select your {0} folder:", name)
+        ChangeDirDialog.Description = String.Format("选择{0}文件夹:", name)
         ChangeDirDialog.ShowNewFolderButton = False
 
         If ChangeDirDialog.ShowDialog = System.Windows.Forms.DialogResult.OK Then

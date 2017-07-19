@@ -230,7 +230,7 @@ Partial Class SettingsForm
         Me.GroupBox3.Size = New System.Drawing.Size(303, 68)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "转发"
+        Me.GroupBox3.Text = "中继键"
         '
         'ChangeRelayButton
         '
@@ -239,7 +239,7 @@ Partial Class SettingsForm
         Me.ChangeRelayButton.Name = "ChangeRelayButton"
         Me.ChangeRelayButton.Size = New System.Drawing.Size(289, 30)
         Me.ChangeRelayButton.TabIndex = 0
-        Me.ChangeRelayButton.Text = "转发键： """"{0}"""" （更改）"
+        Me.ChangeRelayButton.Text = "中继键： """"{0}"""" （更改）"
         Me.ChangeRelayButton.UseVisualStyleBackColor = True
         '
         'GroupBox2
