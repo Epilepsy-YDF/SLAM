@@ -109,7 +109,7 @@ Public Class Form1
         'Games.Add(goldeye)
 
         Dim insurg As New SourceGame
-        insurg.name = "叛乱2"
+        insurg.name = "叛乱"
         insurg.directory = "common\insurgency2\"
         insurg.ToCfg = "insurgency\cfg\"
         insurg.libraryname = "insurgen\"
@@ -157,7 +157,7 @@ Public Class Form1
         Dim convert As New FFMpegConverter()
         convert.ExtractFFmpeg()
 
-        Dim command As String = String.Format("-i ""{0}"" -f wav -flags bitexact -map_metadata -1 -vn -acodec pcm_s16le -ar {1} -ac {2} ""{3}""", Path.GetFullPath(File), Game.samplerate, Game.channels, Path.GetFullPath(outputFile))
+        Dim command As String = String.Format("-i ""{0}"" -n -f wav -flags bitexact -map_metadata -1 -vn -acodec pcm_s16le -ar {1} -ac {2} ""{3}""", Path.GetFullPath(File), Game.samplerate, Game.channels, Path.GetFullPath(outputFile))
         convert.Invoke(command)
     End Sub
 
@@ -167,10 +167,10 @@ Public Class Form1
 
         Dim trimstring As String
         If length > 0 Then
-            trimstring = String.Format("-ss {0} -t {1} ", starttrim, length)
+            trimstring = String.Format("-ss {0} -t {1} ", starttrim.ToString("F5", Globalization.CultureInfo.InvariantCulture), length.ToString("F5", Globalization.CultureInfo.InvariantCulture))
         End If
 
-        Dim command As String = String.Format("-i ""{0}"" -f wav -flags bitexact -map_metadata -1 -vn -acodec pcm_s16le -ar {1} -ac {2} {3}-af ""volume={4}"" ""{5}""", Path.GetFullPath(inpath), samplerate, channels, trimstring, volume, Path.GetFullPath(outpath))
+        Dim command As String = String.Format("-i ""{0}"" -n -f wav -flags bitexact -map_metadata -1 -vn -acodec pcm_s16le -ar {1} -ac {2} {3}-af ""volume={4}"" ""{5}""", Path.GetFullPath(inpath), samplerate, channels, trimstring, volume.ToString("F5", Globalization.CultureInfo.InvariantCulture), Path.GetFullPath(outpath))
         convert.Invoke(command)
     End Sub
 
@@ -193,7 +193,7 @@ Public Class Form1
             End If
 
         Else
-            MessageBox.Show("你丢失了NAudio.dll或NReco.VideoConverter.dll！无法导入！", "文件丢失", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("你丢失了NAudio.dll或NReco.VideoConverter.dll文件！无法导入曲目！", "文件丢失", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -210,7 +210,7 @@ Public Class Form1
             End If
 
         Else
-            MessageBox.Show("你丢失了NAudio.dll、Newtonsoft.Json.dll、NReco.VideoConverter.dll、YoutubeExtractor.dll的其中之一！无法从YouTube上导入！", "文件丢失", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("你丢失了NAudio.dll、Newtonsoft.Json.dll、NReco.VideoConverter.dll、YoutubeExtractor.dll的其中之一！无法从YouTube导入曲目！", "文件丢失", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -262,7 +262,7 @@ Public Class Form1
         Next
 
         If FailedFiles.Count > 0 Then
-            MsgBoxText = MsgBoxText & "以下文件转换失败：" & String.Join("，", FailedFiles)
+            MsgBoxText = MsgBoxText & "以下文件转换失败：" & String.Join("、", FailedFiles)
         End If
 
         ReloadTracks(GetCurrentGame)
@@ -333,7 +333,7 @@ Public Class Form1
         Else
             StartPoll()
             If Not My.Settings.NoHint Then
-                If MessageBox.Show("别忘了在控制台里输入""exec slam""！单击""Cancel""以让这条消息永远不再出现", "SLAM", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.Cancel Then
+                If MessageBox.Show("别忘了在控制台里输入“"exec slam"”！点击“"取消"”以不再显示这条消息。", "SLAM", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.Cancel Then
                     My.Settings.NoHint = True
                     My.Settings.Save()
                 End If
@@ -365,7 +365,7 @@ Public Class Form1
         Dim GameCfgFolder As String = Path.Combine(GameDir, Game.ToCfg)
 
         If Not IO.Directory.Exists(GameCfgFolder) Then
-            Throw New System.Exception("steamapps文件夹路径错误。取消勾选""覆盖文件夹检测""或选择一个正确的steamapps文件夹路径。")
+            Throw New System.Exception("“"steamapps"”文件夹不正确禁用“"覆盖文件夹检测"”或选择一个正确的文件夹。")
         End If
 
         'slam.cfg
@@ -415,8 +415,8 @@ Public Class Form1
 
         'slam_tracklist.cfg
         Using slam_tracklist_cfg As StreamWriter = New StreamWriter(GameCfgFolder & "slam_tracklist.cfg")
-            slam_tracklist_cfg.WriteLine("echo ""你可以通过输入一个标签或者他们的歌曲号码来选择歌曲。""")
-            slam_tracklist_cfg.WriteLine("echo ""--------------------歌曲列表--------------------""")
+            slam_tracklist_cfg.WriteLine("echo ""你可以输入曲目的标签或编号以准备播放曲目。""")
+            slam_tracklist_cfg.WriteLine("echo ""--------------------曲目列表--------------------""")
             For Each Track In Game.tracks
                 Dim index As String = Game.tracks.IndexOf(Track)
                 If My.Settings.WriteTags Then
@@ -483,13 +483,13 @@ Public Class Form1
 
                     Dim GameCfgFolder As String = Path.Combine(SteamAppsPath, Game.directory, Game.ToCfg)
                     Using slam_curtrack As StreamWriter = New StreamWriter(GameCfgFolder & "slam_curtrack.cfg")
-                        slam_curtrack.WriteLine("echo ""[SLAM] 歌曲名称：{0}""", Track.name)
+                        slam_curtrack.WriteLine("echo ""[SLAM]曲目名称：{0}""", Track.name)
                     End Using
                     Using slam_saycurtrack As StreamWriter = New StreamWriter(GameCfgFolder & "slam_saycurtrack.cfg")
-                        slam_saycurtrack.WriteLine("say ""[SLAM] 歌曲名称：{0}""", Track.name)
+                        slam_saycurtrack.WriteLine("say ""[SLAM]曲目名称：{0}""", Track.name)
                     End Using
                     Using slam_sayteamcurtrack As StreamWriter = New StreamWriter(GameCfgFolder & "slam_sayteamcurtrack.cfg")
-                        slam_sayteamcurtrack.WriteLine("say_team ""[SLAM] 歌曲名称：{0}""", Track.name)
+                        slam_sayteamcurtrack.WriteLine("say_team ""[SLAM]曲目名称：{0}""", Track.name)
                     End Using
 
 
@@ -556,7 +556,7 @@ Public Class Form1
                 If IO.Directory.Exists(My.Settings.userdata) Then
                     UserDataPath = My.Settings.userdata
                 Else
-                    Throw New System.Exception("userdata文件夹不存在。取消勾选""覆盖文件夹检测""或选择一个正确的路径。")
+                    Throw New System.Exception("“"userdata"”文件夹不存在。禁用""覆盖文件夹检测""，或选择一个正确的文件夹。")
                 End If
             End If
 
@@ -588,7 +588,7 @@ Public Class Form1
                         RelayCfg = reader.ReadToEnd
                     End Using
 
-                    Dim command As String = recog(RelayCfg, String.Format("绑定""{0}"" ""(.*?)""", My.Settings.RelayKey))
+                    Dim command As String = recog(RelayCfg, String.Format("bind ""{0}"" ""(.*?)""", My.Settings.RelayKey))
                     If Not String.IsNullOrEmpty(command) Then
                         'load audiofile
                         If IsNumeric(command) Then
@@ -657,7 +657,7 @@ Public Class Form1
         Select Case e.ProgressPercentage
             Case SEARCHING
                 status = SEARCHING
-                StatusLabel.Text = "状态：搜索中"
+                StatusLabel.Text = "状态：搜索中…"
             Case WORKING
                 status = WORKING
                 StatusLabel.Text = "状态：工作中"
@@ -677,7 +677,7 @@ Public Class Form1
         RefreshTrackList()
 
         If Not IsNothing(e.Result) Then 'Result is always an exception
-            MessageBox.Show(e.Result.Message & "请参见errorlog.txt以获取更多信息", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(e.Result.Message & "请参见“"errorlog.txt"”以获取更多信息。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
         If ClosePending Then
@@ -725,9 +725,9 @@ Public Class Form1
 
     Private Sub DisplayLoaded(ByVal track As Integer)
         For i As Integer = 0 To TrackList.Items.Count - 1
-            TrackList.Items(i).SubItems(0).Text = "否"
+            TrackList.Items(i).SubItems(0).Text = "False"
         Next
-        TrackList.Items(track).SubItems(0).Text = "是"
+        TrackList.Items(track).SubItems(0).Text = "True"
     End Sub
 
     Private Sub LoadTrackKeys(ByVal Game As SourceGame)
@@ -841,7 +841,7 @@ Public Class Form1
             SelectedNames.Add(item.SubItems(1).Text)
         Next
 
-        If MessageBox.Show(String.Format("你确定要删除{0}吗？", String.Join(", ", SelectedNames)), "删除歌曲？", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+        If MessageBox.Show(String.Format("你确定要删除{0}吗？", String.Join(", ", SelectedNames)), "Delete Track?", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
 
             For Each item In SelectedNames
                 Dim FilePath As String = Path.Combine(game.libraryname, item & game.FileExtension)
@@ -883,7 +883,7 @@ Public Class Form1
                 ReloadTracks(GetCurrentGame)
                 RefreshTrackList()
             Else
-                MessageBox.Show(String.Format("""{0}""已经被绑定了！", SelectKeyDialog.ChosenKey), "无效的快捷键")
+                MessageBox.Show(String.Format("“"{0}"”已经被占用了！", SelectKeyDialog.ChosenKey), "无效的快捷键")
             End If
 
 
@@ -948,7 +948,7 @@ Public Class Form1
             End If
 
         Else
-            MessageBox.Show("你丢失了NAudio.dll！无法截取！", "文件丢失", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("你丢失了NAudio.dll！无法截取片段！", "文件丢失", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -972,10 +972,10 @@ Public Class Form1
             Catch ex As Exception
                 Select Case ex.HResult
                     Case -2147024809
-                        MessageBox.Show("""" & RenameDialog.filename & """当中包含了无效字符。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show(""“" & RenameDialog.filename & "”"包含无效字符", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
                     Case -2146232800
-                        MessageBox.Show("与现有的某个曲目重名了。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show("存在一个同名曲目。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
                     Case Else
                         MessageBox.Show(ex.Message & "请参见errorlog.txt以获取更多信息。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1005,7 +1005,7 @@ Public Class Form1
         Dim UpdateURL As String = UpdateText.Split()(1)
         If Version.TryParse(UpdateText.Split()(0), NewVersion) Then
             If My.Application.Info.Version.CompareTo(NewVersion) < 0 Then
-                If MessageBox.Show(String.Format("一个更新({0})现在可用！点击""确认""下载。", NewVersion.ToString), "SLAM更新", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
+                If MessageBox.Show(String.Format("有一个更新（{0}）现在可用！点击“"确定"”以跳转到下载页。", NewVersion.ToString), "SLAM 更新", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
                     Process.Start(UpdateURL)
                 End If
             End If
@@ -1020,13 +1020,13 @@ Public Class Form1
                 My.Settings.Save()
                 RefreshPlayKey()
             Else
-                MessageBox.Show("播放键和中继键不能相同！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("播放键与继续键不能相同！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
 
     Private Sub RefreshPlayKey()
-        PlayKeyButton.Text = String.Format("播放键""{0}""（更改）", My.Settings.PlayKey)
+        PlayKeyButton.Text = String.Format("播放键：“"{0}"”（更改）", My.Settings.PlayKey)
     End Sub
 
     Public Sub LogError(ByVal ex As Exception)

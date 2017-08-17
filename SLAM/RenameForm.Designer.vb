@@ -42,7 +42,7 @@ Partial Class RenameForm
         Me.DoneButton.Name = "DoneButton"
         Me.DoneButton.Size = New System.Drawing.Size(87, 30)
         Me.DoneButton.TabIndex = 1
-        Me.DoneButton.Text = "确认"
+        Me.DoneButton.Text = "完成"
         Me.DoneButton.UseVisualStyleBackColor = True
         '
         'Label1
@@ -50,9 +50,9 @@ Partial Class RenameForm
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(14, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(68, 17)
+        Me.Label1.Size = New System.Drawing.Size(56, 17)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "新的名字："
+        Me.Label1.Text = "新名字："
         '
         'RenameForm
         '

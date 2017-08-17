@@ -34,7 +34,7 @@ Partial Class SelectKey
         Me.SelectButton.Name = "SelectButton"
         Me.SelectButton.Size = New System.Drawing.Size(216, 30)
         Me.SelectButton.TabIndex = 1
-        Me.SelectButton.Text = "确认"
+        Me.SelectButton.Text = "完成"
         Me.SelectButton.UseVisualStyleBackColor = True
         '
         'Label1
@@ -42,9 +42,9 @@ Partial Class SelectKey
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(14, 11)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(71, 17)
+        Me.Label1.Size = New System.Drawing.Size(80, 17)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "选择快捷键:"
+        Me.Label1.Text = "选择一个键："
         '
         'BindKeyBox
         '
@@ -74,7 +74,7 @@ Partial Class SelectKey
         Me.MinimizeBox = False
         Me.Name = "SelectKey"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "快捷键选择"
+        Me.Text = "绑定播放键"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

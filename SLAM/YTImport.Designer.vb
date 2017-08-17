@@ -65,7 +65,7 @@ Partial Class YTImport
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(160, 24)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(117, 24)
         Me.ToolStripStatusLabel1.Spring = True
         Me.ToolStripStatusLabel1.Text = "状态：空闲"
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -80,8 +80,8 @@ Partial Class YTImport
         Me.DonateLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.DonateLabel.IsLink = True
         Me.DonateLabel.Name = "DonateLabel"
-        Me.DonateLabel.Size = New System.Drawing.Size(209, 24)
-        Me.DonateLabel.Text = "想要通过捐助的方式来支持SLAM吗？"
+        Me.DonateLabel.Size = New System.Drawing.Size(185, 24)
+        Me.DonateLabel.Text = "想要以捐助的方式支持SLAM吗？"
         '
         'DownloadWorker
         '
@@ -101,7 +101,7 @@ Partial Class YTImport
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "YTImport"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "导入 YouTube"
+        Me.Text = "从YouTube导入"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

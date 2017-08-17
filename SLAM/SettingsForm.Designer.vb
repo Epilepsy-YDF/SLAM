@@ -111,10 +111,10 @@ Partial Class SettingsForm
         Me.NAudioRadio.Location = New System.Drawing.Point(146, 217)
         Me.NAudioRadio.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.NAudioRadio.Name = "NAudioRadio"
-        Me.NAudioRadio.Size = New System.Drawing.Size(146, 21)
+        Me.NAudioRadio.Size = New System.Drawing.Size(142, 21)
         Me.NAudioRadio.TabIndex = 5
         Me.NAudioRadio.TabStop = True
-        Me.NAudioRadio.Text = "使用 NAudio（传统）"
+        Me.NAudioRadio.Text = "使用NAudio（传统）"
         Me.NAudioRadio.UseVisualStyleBackColor = True
         '
         'FFMPEGRadio
@@ -123,10 +123,10 @@ Partial Class SettingsForm
         Me.FFMPEGRadio.Location = New System.Drawing.Point(34, 217)
         Me.FFMPEGRadio.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.FFMPEGRadio.Name = "FFMPEGRadio"
-        Me.FFMPEGRadio.Size = New System.Drawing.Size(101, 21)
+        Me.FFMPEGRadio.Size = New System.Drawing.Size(97, 21)
         Me.FFMPEGRadio.TabIndex = 4
         Me.FFMPEGRadio.TabStop = True
-        Me.FFMPEGRadio.Text = "使用 FFMPEG"
+        Me.FFMPEGRadio.Text = "使用FFMPEG"
         Me.FFMPEGRadio.UseVisualStyleBackColor = True
         '
         'OverrideGroup
@@ -230,7 +230,7 @@ Partial Class SettingsForm
         Me.GroupBox3.Size = New System.Drawing.Size(303, 68)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "中继键"
+        Me.GroupBox3.Text = "继续键"
         '
         'ChangeRelayButton
         '
@@ -239,7 +239,7 @@ Partial Class SettingsForm
         Me.ChangeRelayButton.Name = "ChangeRelayButton"
         Me.ChangeRelayButton.Size = New System.Drawing.Size(289, 30)
         Me.ChangeRelayButton.TabIndex = 0
-        Me.ChangeRelayButton.Text = "中继键： """"{0}"""" （更改）"
+        Me.ChangeRelayButton.Text = "继续键““""{0}""””（更改）"
         Me.ChangeRelayButton.UseVisualStyleBackColor = True
         '
         'GroupBox2
@@ -278,9 +278,9 @@ Partial Class SettingsForm
         Me.MinimizeToSysTrayCheckBox.Location = New System.Drawing.Point(7, 205)
         Me.MinimizeToSysTrayCheckBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MinimizeToSysTrayCheckBox.Name = "MinimizeToSysTrayCheckBox"
-        Me.MinimizeToSysTrayCheckBox.Size = New System.Drawing.Size(123, 21)
+        Me.MinimizeToSysTrayCheckBox.Size = New System.Drawing.Size(99, 21)
         Me.MinimizeToSysTrayCheckBox.TabIndex = 12
-        Me.MinimizeToSysTrayCheckBox.Text = "最小化到系统托盘"
+        Me.MinimizeToSysTrayCheckBox.Text = "最小化到托盘"
         Me.MinimizeToSysTrayCheckBox.UseVisualStyleBackColor = True
         '
         'HoldToPlay
@@ -300,9 +300,9 @@ Partial Class SettingsForm
         Me.ConTagsCheckBox.Location = New System.Drawing.Point(7, 144)
         Me.ConTagsCheckBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ConTagsCheckBox.Name = "ConTagsCheckBox"
-        Me.ConTagsCheckBox.Size = New System.Drawing.Size(111, 21)
+        Me.ConTagsCheckBox.Size = New System.Drawing.Size(135, 21)
         Me.ConTagsCheckBox.TabIndex = 5
-        Me.ConTagsCheckBox.Text = "控制台显示标签"
+        Me.ConTagsCheckBox.Text = "在控制台中显示标签"
         Me.ConTagsCheckBox.UseVisualStyleBackColor = True
         '
         'StartEnabledCheckBox
@@ -313,7 +313,7 @@ Partial Class SettingsForm
         Me.StartEnabledCheckBox.Name = "StartEnabledCheckBox"
         Me.StartEnabledCheckBox.Size = New System.Drawing.Size(75, 21)
         Me.StartEnabledCheckBox.TabIndex = 4
-        Me.StartEnabledCheckBox.Text = "启用启动"
+        Me.StartEnabledCheckBox.Text = "允许启动"
         Me.StartEnabledCheckBox.UseVisualStyleBackColor = True
         '
         'LogCheckBox
@@ -324,7 +324,7 @@ Partial Class SettingsForm
         Me.LogCheckBox.Name = "LogCheckBox"
         Me.LogCheckBox.Size = New System.Drawing.Size(75, 21)
         Me.LogCheckBox.TabIndex = 2
-        Me.LogCheckBox.Text = "日志错误"
+        Me.LogCheckBox.Text = "记录错误"
         Me.LogCheckBox.UseVisualStyleBackColor = True
         '
         'HintCheckBox
@@ -335,7 +335,7 @@ Partial Class SettingsForm
         Me.HintCheckBox.Name = "HintCheckBox"
         Me.HintCheckBox.Size = New System.Drawing.Size(75, 21)
         Me.HintCheckBox.TabIndex = 3
-        Me.HintCheckBox.Text = "没有提示"
+        Me.HintCheckBox.Text = "关闭提示"
         Me.HintCheckBox.UseVisualStyleBackColor = True
         '
         'UpdateCheckBox

@@ -37,7 +37,7 @@
             Me.Close()
 
         Else
-            MessageBox.Show("That bind key does not exist.", "Key Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("不存在那个键", "按键错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 End Class

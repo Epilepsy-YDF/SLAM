@@ -30,12 +30,12 @@ Partial Class SetVolume
         '
         'SelectButton
         '
-        Me.SelectButton.Location = New System.Drawing.Point(318, 83)
+        Me.SelectButton.Location = New System.Drawing.Point(317, 82)
         Me.SelectButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.SelectButton.Name = "SelectButton"
-        Me.SelectButton.Size = New System.Drawing.Size(116, 29)
+        Me.SelectButton.Size = New System.Drawing.Size(117, 30)
         Me.SelectButton.TabIndex = 1
-        Me.SelectButton.Text = "确认"
+        Me.SelectButton.Text = "完成"
         Me.SelectButton.UseVisualStyleBackColor = True
         '
         'VolumeBar
@@ -50,7 +50,7 @@ Partial Class SetVolume
         '
         'VolumeNumber
         '
-        Me.VolumeNumber.Location = New System.Drawing.Point(14, 77)
+        Me.VolumeNumber.Location = New System.Drawing.Point(14, 76)
         Me.VolumeNumber.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.VolumeNumber.MaxLength = 3
         Me.VolumeNumber.Name = "VolumeNumber"

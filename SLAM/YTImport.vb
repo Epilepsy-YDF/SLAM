@@ -16,9 +16,9 @@ Public Class YTImport
             TextBox1.Enabled = False
             ImportButton.Enabled = False
             DownloadWorker.RunWorkerAsync("youtube.com/watch?v=" & youtubeMatch.Groups(1).Value)
-            ToolStripStatusLabel1.Text = "状态：正在下载"
+            ToolStripStatusLabel1.Text = "状态：下载中…"
         Else
-            MessageBox.Show("无效的YouTube链接", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("无效的YouTube链接。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox1.Enabled = True
             ImportButton.Enabled = True
         End If
@@ -33,7 +33,7 @@ Public Class YTImport
                 If videoInfos.Any(Function(info) info.AdaptiveType = AdaptiveType.None AndAlso info.VideoType = VideoType.Mp4) Then
                     video = videoInfos.First(Function(info) info.AdaptiveType = AdaptiveType.None AndAlso info.VideoType = VideoType.Mp4)
                 Else
-                    Throw New System.Exception("找不到下载地址。")
+                    Throw New System.Exception("找不到下载链接。")
                 End If
             End If
 
